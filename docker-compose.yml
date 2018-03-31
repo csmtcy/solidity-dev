@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  truffle:
+    # image: desmart/truffle:3.2
+    build: .
+    links:
+      - ganache
+    environment:
+      - RPC_HOST=ganache
+    volumes:
+      - .:/usr/src/app
+  ganache:
+    image: trufflesuite/ganache-cli:latest
+    ports:
+      - '8545:8545'
